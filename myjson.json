@@ -1,0 +1,395 @@
+{
+    "meta_version": 0.1,
+    "app_name": "com.samsung.tv.notifications-app",
+    "algorithms": [
+        {
+            "algo_name": "color_filtered_boundingboxes",
+            "min_color": [
+                230,
+                230,
+                230
+            ],
+            "max_color": [
+                255,
+                255,
+                255
+            ]
+        },
+        {
+            "algo_name": "template_match",
+            "comment": "sh#alarm#settings",
+            "match_threshold": 0,
+            "focus_box": {
+                "x": 548,
+                "y": 242,
+                "w": 139,
+                "h": 29
+            },
+            "focus_box_margin": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff": {
+                "x": -58,
+                "y": -127,
+                "w": -97,
+                "h": 17
+            },
+            "parameters": [
+                {
+                    "state": "sh#alarm#settings",
+                    "asset": "samsung_health.png"
+                }
+            ]
+        },
+        {
+            "algo_name": "template_match",
+            "comment": "cam_move#main#close",
+            "match_threshold": 0,
+            "focus_box": {
+                "x": 547,
+                "y": 263,
+                "w": 141,
+                "h": 29
+            },
+            "focus_box_margin": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff": {
+                "x": -55,
+                "y": -143,
+                "w": -98,
+                "h": 11
+            },
+            "parameters": [
+                {
+                    "state": "cam_move#main#close",
+                    "asset": "cam.png"
+                }
+            ]
+        },
+        {
+            "algo_name": "template_match",
+            "comment": "cam_move#main#fullscreen",
+            "match_threshold": 0,
+            "focus_box": {
+                "x": 547,
+                "y": 233,
+                "w": 141,
+                "h": 29
+            },
+            "focus_box_margin": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff": {
+                "x": -55,
+                "y": -113,
+                "w": -98,
+                "h": 11
+            },
+            "parameters": [
+                {
+                    "state": "cam_move#main#fullscreen",
+                    "asset": "cam.png"
+                }
+            ]
+        },
+        {
+            "algo_name": "template_match",
+            "match_threshold": 0,
+            "comment": "  st_pin#main#cancel usb_out#exit#ok",
+            "parameters": [
+                {
+                    "state": "st_pin#main#cancel",
+                    "asset": "smartthings.png"
+                },
+                {
+                    "state": "usb_out#exit#ok",
+                    "asset": "usb.png"
+                }
+            ],
+            "focus_box": {
+                "x": 547,
+                "y": 167,
+                "w": 141,
+                "h": 29
+            },
+            "focus_box_margin": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff": {
+                "x": -57,
+                "y": -52,
+                "w": -99,
+                "h": 17
+            }
+        },
+        {
+            "algo_name": "template_match",
+            "match_threshold": 0,
+            "comment": "  sh#alarm#skip_today usb_in#main#cancel",
+            "parameters": [
+                {
+                    "state": "sh#alarm#skip_today",
+                    "asset": "samsung_health.png"
+                },
+                {
+                    "state": "usb_in#main#cancel",
+                    "asset": "usb.png"
+                }
+            ],
+            "focus_box": {
+                "x": 547,
+                "y": 212,
+                "w": 141,
+                "h": 29
+            },
+            "focus_box_margin": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff": {
+                "x": -57,
+                "y": -97,
+                "w": -99,
+                "h": 17
+            }
+        },
+        {
+            "algo_name": "template_match",
+            "match_threshold": 0,
+            "comment": "  sh#alarm#start_now usb_in#main#browse",
+            "parameters": [
+                {
+                    "state": "sh#alarm#start_now",
+                    "asset": "samsung_health.png"
+                },
+                {
+                    "state": "usb_in#main#browse",
+                    "asset": "usb.png"
+                }
+            ],
+            "focus_box": {
+                "x": 548,
+                "y": 182,
+                "w": 139,
+                "h": 29
+            },
+            "focus_box_margin": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff": {
+                "x": -58,
+                "y": -67,
+                "w": -97,
+                "h": 17
+            }
+        },
+        {
+            "algo_name": "template_match",
+            "match_threshold": 0,
+            "comment": "  network#main#ok-1 network#main#ok-2 st_timeout#main#ok",
+            "parameters": [
+                {
+                    "state": "network#main#ok-1",
+                    "asset": "network_cable_connected.png"
+                },
+                {
+                    "state": "network#main#ok-2",
+                    "asset": "network_cable_disconnected.png"
+                },
+                {
+                    "state": "st_timeout#main#ok",
+                    "asset": "smartthings.png"
+                }
+            ],
+            "focus_box": {
+                "x": 547,
+                "y": 152,
+                "w": 141,
+                "h": 29
+            },
+            "focus_box_margin": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff": {
+                "x": -58,
+                "y": -37,
+                "w": -87,
+                "h": 20
+            }
+        },
+        {
+            "algo_name": "search_focusbox",
+            "parameters": [
+                {
+                    "state": "appinstall#main#close",
+                    "comment": "appinstall#main#close",
+                    "focus_box": {
+                        "x": 548,
+                        "y": 182,
+                        "w": 139,
+                        "h": 29
+                    }
+                },
+                {
+                    "state": "appinstall#main#open",
+                    "comment": "appinstall#main#open",
+                    "focus_box": {
+                        "x": 548,
+                        "y": 152,
+                        "w": 139,
+                        "h": 29
+                    }
+                }
+            ]
+        }
+    ],
+    "state_descriptions": [
+        {
+            "state": "appinstall#main#close",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Close"
+                ]
+            }
+        },
+        {
+            "state": "appinstall#main#open",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Open"
+                ]
+            }
+        },
+        {
+            "state": "cam_move#main#close",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Close"
+                ]
+            }
+        },
+        {
+            "state": "cam_move#main#fullscreen",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "View in Full Seren"
+                ]
+            }
+        },
+        {
+            "state": "network#main#ok-1",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "ok"
+                ]
+            }
+        },
+        {
+            "state": "network#main#ok-2",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "ok"
+                ]
+            }
+        },
+        {
+            "state": "sh#alarm#settings",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Settings"
+                ]
+            }
+        },
+        {
+            "state": "sh#alarm#skip_today",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Skip For Today"
+                ]
+            }
+        },
+        {
+            "state": "sh#alarm#start_now",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "StartNow"
+                ]
+            }
+        },
+        {
+            "state": "st_pin#main#cancel",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Cancel"
+                ]
+            }
+        },
+        {
+            "state": "st_timeout#main#ok",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "ok"
+                ]
+            }
+        },
+        {
+            "state": "usb_in#main#browse",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Browse"
+                ]
+            }
+        },
+        {
+            "state": "usb_in#main#cancel",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "Cancel"
+                ]
+            }
+        },
+        {
+            "state": "usb_out#exit#ok",
+            "type": "button",
+            "button_title": {
+                "en": [
+                    "ok"
+                ]
+            }
+        }
+    ]
+}

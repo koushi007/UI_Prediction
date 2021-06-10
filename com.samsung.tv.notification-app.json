@@ -1,0 +1,340 @@
+{
+    "meta_version": 0.1,
+    "app_name": "com.samsung.tv.notification-app",
+    "algorithms":[
+        {
+            "algo_name":"color_filtered_boundingboxes",
+            "min_color":[230, 230, 230],
+            "max_color":[255, 255, 255]
+        },
+        {
+            "algo_name":"search_focusbox",
+            "parameters" : [
+                {
+                    "state":"sh#alarm#settings",
+                    "comment":"Samsung Health Alarm Settings Btn",
+                    "focus_box":{
+                        "x":547,
+                        "y":243,
+                        "w":142,
+                        "h":29
+                    }
+                }
+            ]
+        },
+        {
+            "algo_name":"template_match",
+            "comment" : "camera notification view fullscreen button",
+            "match_threshold":3500000.0,
+            "focus_box":{
+                "x":497,
+                "y":125,
+                "w":142,
+                "h":29
+            },
+            "focus_box_margin" : {
+                "x": 50,
+                "y": 109,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff":{
+                "x":-50,
+                "y":-109,
+                "w":-105,
+                "h":0
+            },
+            "parameters" : [
+                {
+                    "state":"cam_move#main#fullscreen",
+                    "asset": "camera.png"
+                }
+            ]
+        },
+        {
+            "algo_name":"template_match",
+            "comment" : "camera notification close button",
+            "match_threshold":3500000.0,
+            "focus_box":{
+                "x":497,
+                "y":125,
+                "w":142,
+                "h":29
+            },
+            "focus_box_margin" : {
+                "x": 50,
+                "y": 139,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff":{
+                "x":-50,
+                "y":-139,
+                "w":-100,
+                "h":0
+            },
+            "parameters" : [
+                {
+                    "state":"cam_move#main#close",
+                    "asset": "camera.png"
+                }
+            ]
+        },
+        {
+            "algo_name":"template_match",
+            "comment" : "usb out ok and smart thing pin cancel conflict",
+            "match_threshold":3500000.0,
+            "focus_box":{
+                "x":491,
+                "y":117,
+                "w":142,
+                "h":29
+            },
+            "focus_box_margin" : {
+                "x": 56,
+                "y": 52,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff":{
+                "x":-56,
+                "y":-50,
+                "w":-90,
+                "h":12
+            },
+            "parameters" : [
+                {
+                    "state":"st_pin#main#cancel",
+                    "asset": "smartthings.png"
+                },
+                {
+                    "state":"usb_out#exit#ok",
+                    "asset": "usb.png"
+                }
+            ]
+        },
+        {
+            "algo_name":"template_match",
+            "comment" : "conflicting button usb browse, sh start now",
+            "match_threshold":3500000.0,
+            "focus_box":{
+                "x":491,
+                "y":117,
+                "w":142,
+                "h":29
+            },
+            "focus_box_margin" : {
+                "x": 56,
+                "y": 96,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff":{
+                "x":-57,
+                "y":-67,
+                "w":-90,
+                "h":17
+            },
+            "parameters" : [
+                {
+                    "state":"usb_in#main#browse",
+                    "asset": "usb.png"
+                },
+                {
+                    "state":"sh#alarm#start_now",
+                    "asset": "samsung_health.png"
+                }
+            ]
+        },
+        {
+            "algo_name":"template_match",
+            "comment" : "second conflicting button usb, samsung health, app install-cancel",
+            "match_threshold":3500000.0,
+            "focus_box":{
+                "x":491,
+                "y":117,
+                "w":142,
+                "h":29
+            },
+            "focus_box_margin" : {
+                "x": 56,
+                "y": 126,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff":{
+                "x":-57,
+                "y":-97,
+                "w":-90,
+                "h":17
+            },
+            "parameters" : [
+                {
+                    "state":"usb_in#main#cancel",
+                    "asset": "usb.png"
+                },
+                {
+                    "state":"sh#alarm#skip_today",
+                    "asset": "samsung_health.png"
+                }
+            ]
+        },
+        {
+            "algo_name":"template_match",
+            "comment" : "conflicting button network-ok, app install-open",
+            "match_threshold":200000.0,
+            "focus_box":{
+                "x":491,
+                "y":117,
+                "w":142,
+                "h":29
+            },
+            "focus_box_margin" : {
+                "x": 56,
+                "y": 36,
+                "w": 0,
+                "h": 0
+            },
+            "focus_roi_diff":{
+                "x":-58,
+                "y":-38,
+                "w":-88,
+                "h":20
+            },
+            "parameters" : [
+                {
+                    "state":"network#main#ok",
+                    "asset": "network_cable_connected.png"
+                },
+                {
+                    "state":"network#main#ok",
+                    "asset": "network_cable_disconnected.png"
+                },
+                {
+                    "state":"st_timeout#main#ok",
+                    "asset": "smartthings.png"
+                }
+            ]
+        },
+        {
+            "algo_name":"search_focusbox",
+            "parameters" : [
+                {
+                    "state":"appinstall#main#open",
+                    "comment":"app install open button, conflicts with network dialog, but icon is not fixed so using search_focusbox",
+                    "focus_box":{
+                        "x":547,
+                        "y":153,
+                        "w":142,
+                        "h":29
+                    }
+                },
+                {
+
+                    "state":"appinstall#main#close",
+                    "comment": "app install open button, conflicts with other notification dlg, but icon is not fixed so using search_focusbox",
+                    "focus_box":{
+                        "x":547,
+                        "y":183,
+                        "w":142,
+                        "h":29
+                    }
+                }
+
+            ]
+        }
+    ],
+    "state_descriptions":[
+        {
+            "state":"cam_move#main#fullscreen",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["view in full screen"]
+            }
+        },
+        {
+            "state":"cam_move#main#close",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["close"]
+            }
+        },
+        {
+            "state":"st_timeout#main#ok",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["ok"]
+            }
+        },
+        {
+            "state":"st_pin#main#cancel",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["cancel"]
+            }
+        },
+	    {
+            "state":"usb_in#main#browse",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["browse"]
+            }
+        },
+	    {
+            "state":"usb_in#main#cancel",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["cancel"]
+            }
+        },
+        {
+            "state":"usb_out#exit#ok",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["ok"]
+            }
+        },
+        {
+            "state":"network#main#ok",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["ok"]
+            }
+        },
+	    {
+            "state":"sh#alarm#start_now",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["start now"]
+            }
+        },
+        {
+            "state":"sh#alarm#skip_today",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["skip for today"]
+            }
+        },
+        {
+            "state":"sh#alarm#settings",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["settings"]
+            }
+        },
+        {
+            "state":"appinstall#main#close",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["close"]
+            }
+        },
+        {
+            "state":"appinstall#main#open",
+            "type":"button",
+            "button_titles" : {
+                "en" : ["open"]
+            }
+        }
+    ]
+}
