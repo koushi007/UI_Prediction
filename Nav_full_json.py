@@ -2,6 +2,7 @@ import os
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image
 import pytesseract
 import json
 from utils import *
@@ -9,6 +10,8 @@ from utils import *
 # IMREAD_UNCHANGED loads the image as is (including the alpha channel if present)
 # IMREAD_GRAYSCALE loads the image as an intensity one
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
+# pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # tesseract path for Ubuntu server
+
 print(cv2.__version__)
 
 focus_box = dict()
@@ -108,8 +111,12 @@ for file in os.listdir('notification-screenshots'):
     x1,y1 = focus_box[file[:-4]][0],focus_box[file[:-4]][1],
     x2,y2 = focus_box[file[:-4]][0]+focus_box[file[:-4]][2],focus_box[file[:-4]][1]+focus_box[file[:-4]][3]
     cropped_img = img[y1:y2,x1:x2]
-    cv2.imwrite("buttons/"+file,cropped_img)
-    text = pytesseract.image_to_string(cropped_img)
+	
+	# On ubuntu server pytesseract.image_to_string() crashes with png data, so storing the data in jpg
+    cropped_file = "buttons/"+file[:-3] + "jpg"
+    print(cropped_file)
+    cv2.imwrite(cropped_file,cropped_img)
+    text = pytesseract.image_to_string(Image.open(cropped_file))
     text = text.encode("ascii","ignore")
     text = text.decode().lstrip().rstrip()
     print(text)
@@ -130,9 +137,10 @@ linked = linkage(focus_box_list,'centroid')
 
 #labelList = range(1, 11)
 
-plt.figure(figsize=(10, 7))
-dendrogram(linked)
-plt.show()
+# Following looks useful for debugging only. Please enable it only on Windows. On ubuntu server it crashes
+#plt.figure(figsize=(10, 7))
+#dendrogram(linked)
+#plt.show()
 
 num = np.size(np.where(linked[:,2] < 5))
 
