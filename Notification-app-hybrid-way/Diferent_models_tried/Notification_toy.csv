@@ -1,0 +1,15 @@
+x,y,w,h,cam.png,usb.png,samsung_health.png,smart_things.png,network_disconnected.png,network_connected.png,name
+548,182,139,29,0,0,0,0,0,0,appinstall#main#close.png
+548,152,139,29,0,0,0,0,0,0,appinstall#main#open.png
+547,263,141,29,1,0,0,0,0,0,cam_move#main#close.png
+547,233,141,29,1,0,0,0,0,0,cam_move#main#fullscreen.png
+548,152,139,29,0,0,0,0,0,1,network#main#ok-1.png
+548,152,139,29,0,0,0,0,1,0,network#main#ok-2.png
+548,242,139,29,0,0,1,0,0,0,sh#alarm#settings.png
+547,212,141,29,0,0,1,0,0,0,sh#alarm#skip_today.png
+547,182,141,29,0,0,1,0,0,0,sh#alarm#start_now.png
+547,167,141,29,0,0,0,1,0,0,st_pin#main#cancel.png
+547,152,141,29,0,0,0,1,0,0,st_timeout#main#ok.png
+548,182,139,29,0,1,0,0,0,0,usb_in#main#browse.png
+547,212,141,29,0,1,0,0,0,0,usb_in#main#cancel.png
+547,167,141,29,0,1,0,0,0,0,usb_out#exit#ok.png
