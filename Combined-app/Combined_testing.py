@@ -314,8 +314,10 @@ dict_statesmap = dict(list(df_statesmap.values))
 input_states = [i.split('-')[0] for i in os.listdir('Netflix-Testing')] + [i.split('-')[0] for i in os.listdir('youtube_Testing')]
 predicted_states = []
 for i in range(X.shape[0]):
-    print(dict_statesmap[argmax(model.predict(X)[i])])
+    print("\n")
+    print(input_states[i]," => ", dict_statesmap[argmax(model.predict(X)[i])])
     predicted_states.append(dict_statesmap[argmax(model.predict(X)[i])])
+
 result = [1 if predicted_states[i] == input_states[i] else 0 for i in range(X.shape[0])]
 
-print("Test accuracy : " + str(np.sum(result)) + " images predicted correctly out of "+str(len(input_states))) 
+#print("Test accuracy : " + str(np.sum(result)) + " images predicted correctly out of "+str(len(input_states))) 
