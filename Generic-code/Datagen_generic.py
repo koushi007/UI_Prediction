@@ -135,11 +135,11 @@ for json_file in os.listdir('json-dir'):
             pass
         data_row = data_row + data_row_icons
         data_row.append(app_identifier)
-        data_row.append(file.split('-')[0])
+        data_row.append(file.split('.')[0].split('-')[0])
         data = data+generate_data(data_row,27)
-        
+        #data.append(data_row)
     
-        cv2.imwrite('new-generic/'+file,img)
+        cv2.imwrite('new-yt/'+file,img)
         thresh = cv2.cvtColor(thresh,cv2.COLOR_GRAY2BGR)
         #cv2.imwrite('new-nt/thresh'+file,thresh)
  
@@ -150,7 +150,7 @@ for i in range(60):
 columns = columns + ["Icon"+str(i+1) for i in range(25)]
 columns.append('APP')
 columns.append('State')
-df = pd.DataFrame(data,columns = columns)
+df = pd.DataFrame(2*data,columns = columns)
 
 df.to_csv("Combined_generic_data.csv") 
     

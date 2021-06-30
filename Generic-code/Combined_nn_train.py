@@ -54,9 +54,9 @@ model.add(Dense(y.shape[1], activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 # fit the model
 
-#es = EarlyStopping(monitor='accuracy', mode='max', verbose=1,baseline = 0.98)
-my_callback = MyThresholdCallback(threshold=0.98)
-model.fit(X_train, y_train, epochs=1500, batch_size=12,validation_split = 0.1,verbose=None,callbacks=[my_callback])
+es = EarlyStopping(monitor='accuracy', mode='max', verbose=1,patience=250)
+#my_callback = MyThresholdCallback(threshold=0.98)
+model.fit(X_train, y_train, epochs=2000, batch_size=100,validation_split = 0.1,verbose=None,callbacks=[es])
 # evaluate the model
 loss, acc = model.evaluate(X_test, y_test)
 print('Test Accuracy: %.3f' % acc)

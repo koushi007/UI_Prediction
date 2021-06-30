@@ -8,6 +8,15 @@
     "focus-boxes" : [
         {
             "blurring" : 0,
+            "threshold-value" : 230,
+            "threshold-type" : 1,
+            "rectangle-error" : 0.02,
+            "conditions":[ "w > 70" , "w < 200"],
+            "search-icon" : [],
+            "color": [0,0,255]
+        },
+        {
+            "blurring" : 0,
             "threshold-value" : 15,
             "threshold-type" : 1,
             "rectangle-error" : 0.02,
@@ -33,15 +42,7 @@
                 }
             ],
             "color": [0,255,0]
-        },
-        {
-            "blurring" : 0,
-            "threshold-value" : 230,
-            "threshold-type" : 1,
-            "rectangle-error" : 0.02,
-            "conditions":[ "w > 70" , "w < 200"],
-            "search-icon" : [],
-            "color": [0,0,255]
         }
+        
     ]
 }

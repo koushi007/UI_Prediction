@@ -165,14 +165,13 @@ X = df.values[:,:]
 X = X.astype('float32')
 X[:,:240] = np.log(X[:,:240]+4)/6.0
 
-model = keras.models.load_model('Combined-toy0.95')
+model = keras.models.load_model('Generic_0.991')
 
 df_statesmap = pd.read_csv('Combined_states_map.csv')
 dict_statesmap = dict(list(df_statesmap.values))
 
 predicted_states = []
 for i in range(X.shape[0]):
-    print("\n")
     print(input_states[i][:-4]," => ", dict_statesmap[argmax(model.predict(X)[i])])
     predicted_states.append(dict_statesmap[argmax(model.predict(X)[i])])
 
