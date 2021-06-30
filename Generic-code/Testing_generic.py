@@ -2,18 +2,9 @@ import cv2
 import os
 import numpy as np
 import pandas as pd
-from pandas.core.common import flatten
-from utils_app import generate_data,find_icon_max,eval_expr,parse_condition,col_names
+from utils_app import find_icon_max,eval_expr,parse_condition,col_names
 import json
 from numpy import argmax
-from pandas import read_csv
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Dense
-from keras.utils import np_utils
-from keras.callbacks import EarlyStopping
-import tensorflow as tf
 from tensorflow import keras
 
 ## Total data will be stored in this list
