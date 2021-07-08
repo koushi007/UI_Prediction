@@ -1,0 +1,14 @@
+,state
+0,st_pin#main#cancel
+1,usb_in#main#browse
+2,appinstall#main#close
+3,cam_move#main#fullscreen
+4,sh#alarm#start_now
+5,usb_out#exit#ok
+6,sh#alarm#settings
+7,cam_move#main#close
+8,st_timeout#main#ok
+9,usb_in#main#cancel
+10,appinstall#main#open
+11,network#main#ok
+12,sh#alarm#skip_today

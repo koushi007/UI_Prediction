@@ -3,6 +3,7 @@
     "directory-path" : "Netflix-Testing/",
     "icon-images-path" : "org.tizen.netflix-app",
     "icon-images-mapping" : "Netflix_iconstates.csv",
+    "states-mapping" : "Netflix_statesmap.csv",
     "app-identifier" : 1,
     "search-icon-global" : [
         {

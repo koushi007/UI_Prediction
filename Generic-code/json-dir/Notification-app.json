@@ -3,6 +3,7 @@
     "directory-path" : "notification-screenshots/",
     "icon-images-path" : "ref",
     "icon-images-mapping" : "Notification_iconstates.csv",
+    "states-mapping" : "Notification_statesmap.csv",
     "app-identifier" : 3,
     "search-icon-global" : [],
     "focus-boxes" : [

@@ -14,6 +14,7 @@ for json_file in os.listdir('json-dir'):
     ## load the json file
     if not json_file.endswith('.json'):
         continue
+    #print(json_file)
     json_file = open('json-dir/'+json_file)
     app_json = json.load(json_file)  
     
@@ -39,6 +40,14 @@ for json_file in os.listdir('json-dir'):
     
     ##target file where data to be stored
     app_identifier = app_json["app-identifier"]
+    
+    ##Output States map file
+    output_states_map = app_json["states-mapping"]
+    df_outputstates = pd.read_csv(output_states_map)
+    list_outputstates = list(df_outputstates['state'].values)
+    dict_outputstates = dict([(list_outputstates[i],i) for i in range(len(list_outputstates))])
+    
+    
     
     ##
     x,y,w,h = -1,-1,-1,-1
@@ -135,8 +144,14 @@ for json_file in os.listdir('json-dir'):
             pass
         data_row = data_row + data_row_icons
         data_row.append(app_identifier)
-        data_row.append(file.split('.')[0].split('-')[0])
-        data = data+generate_data(data_row,27)
+        
+        data_row_output = [0 for i in range(50)]
+        data_row_output[dict_outputstates[file.split('.')[0].split('-')[0]]] = 1
+        data_row += data_row_output
+        
+        #data_row.append(file.split('.')[0].split('-')[0])
+        data = data+generate_data(data_row,76)
+        
         #data.append(data_row)
     
         cv2.imwrite('new-yt/'+file,img)
@@ -149,10 +164,10 @@ for i in range(60):
     columns = columns + col_names(i+1)
 columns = columns + ["Icon"+str(i+1) for i in range(25)]
 columns.append('APP')
-columns.append('State')
+columns = columns + ["Output_state"+str(i+1) for i in range(50)]
 df = pd.DataFrame(2*data,columns = columns)
 
-df.to_csv("Combined_generic_data.csv") 
+df.to_csv("Combined_generic_new_data.csv") 
     
 
 

@@ -7,13 +7,14 @@ import json
 from numpy import argmax
 from tensorflow import keras
 
-## Total data will be stored in this list
-data = []
-
-input_states = []
 
 ##list of json files of all apps is passed
 for json_file in os.listdir('json-testdir'):
+    ## Total data will be stored in this list
+    data = []
+    
+    input_states = []
+
     ## load the json file
     if not json_file.endswith('.json'):
         continue
@@ -140,31 +141,32 @@ for json_file in os.listdir('json-testdir'):
         data_row = data_row + data_row_icons
         data_row.append(app_identifier)
         data.append(data_row)
+        #cv2.imwrite(screenshots_directory+file,img)
         
             
-
-columns = []
-for i in range(60):
-    columns = columns + col_names(i+1)
-columns = columns + ["Icon"+str(i+1) for i in range(25)]
-columns.append('APP')
-df = pd.DataFrame(data,columns = columns)
-
     
-X = df.values[:,:]
-# ensure all data are floating point values
-X = X.astype('float32')
-X[:,:240] = np.log(X[:,:240]+4)/6.0
-
-model = keras.models.load_model('Generic_0.991')
-
-df_statesmap = pd.read_csv('Combined_states_map.csv')
-dict_statesmap = dict(list(df_statesmap.values))
-
-predicted_states = []
-for i in range(X.shape[0]):
-    print(input_states[i][:-4]," => ", dict_statesmap[argmax(model.predict(X)[i])])
-    predicted_states.append(dict_statesmap[argmax(model.predict(X)[i])])
+    columns = []
+    for i in range(60):
+        columns = columns + col_names(i+1)
+    columns = columns + ["Icon"+str(i+1) for i in range(25)]
+    columns.append('APP')
+    df = pd.DataFrame(data,columns = columns)
+    
+        
+    X = df.values[:,:]
+    # ensure all data are floating point values
+    X = X.astype('float32')
+    X[:,:240] = np.log(X[:,:240]+4)/6.0
+    
+    model = keras.models.load_model('Generic_0.998')
+    
+    df_statesmap = pd.read_csv(app_json['states-mapping'])
+    dict_statesmap = dict(list(df_statesmap.values))
+    
+    predicted_states = []
+    for i in range(X.shape[0]):
+        print(input_states[i][:-4]," => ", dict_statesmap[argmax(model.predict(X)[i])])
+        predicted_states.append(dict_statesmap[argmax(model.predict(X)[i])])
 
 #result = [1 if predicted_states[i] == input_states[i] else 0 for i in range(X.shape[0])]
 

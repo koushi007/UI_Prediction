@@ -20,22 +20,23 @@ class MyThresholdCallback(tf.keras.callbacks.Callback):
         if val_acc >= self.threshold:
             self.model.stop_training = True
 # load the dataset
-path = 'Combined_generic_data.csv'
+path = 'Combined_generic_new_data.csv'
 df = read_csv(path, header=None)
 # split into input and output columns
-X, y = df.values[1:,1:-1] , df.values[1:, -1]
+X, y = df.values[1:,1:-50] , df.values[1:, -50:]
 # ensure all data are floating point values
 X = X.astype('float32')
+y = y.astype('float32')
 X[:,:240] = np.log(X[:,:240]+4)/6.0
 
 # encode strings to integer
-encoder = LabelEncoder()
-encoder.fit(y)
-encoded_Y = encoder.transform(y)
-y = np_utils.to_categorical(encoded_Y)
+# encoder = LabelEncoder()
+# encoder.fit(y)
+# encoded_Y = encoder.transform(y)
+# y = np_utils.to_categorical(encoded_Y)
 
-df_encoder = pd.DataFrame(list(encoder.classes_),columns=['states'])
-df_encoder.to_csv('Combined_states_map.csv')
+# df_encoder = pd.DataFrame(list(encoder.classes_),columns=['states'])
+# df_encoder.to_csv('Combined_states_map.csv')
 # split into train and test datasets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
 # print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)

@@ -3,6 +3,7 @@
     "directory-path" : "youtube-screenshots/",
     "icon-images-path" : "com.samsung.tv.cobalt-yt",
     "icon-images-mapping" : "Youtube_iconstates.csv",
+    "states-mapping" : "Youtube_statesmap.csv",
     "app-identifier" : 2,
     "search-icon-global" : [],
     "focus-boxes" : [
