@@ -112,9 +112,9 @@ for file in os.listdir(screenshots_directory):
                             icon_state = find_icon_max(img_used[eval_param[1]:eval_param[1]+eval_param[3],eval_param[0]:eval_param[0]+eval_param[2]],param[-1],icon_directory)
                             
     
-    print(file,"->",icon_state)    
+    #print(file,"->",icon_state)    
 
-    cv2.imwrite('new-noti/'+file,img)
+    cv2.imwrite('Images_with_Focusboxes/'+file,img)
     thresh = cv2.cvtColor(thresh,cv2.COLOR_GRAY2BGR)
     #cv2.imwrite('new-noti/thresh'+file,thresh)
  

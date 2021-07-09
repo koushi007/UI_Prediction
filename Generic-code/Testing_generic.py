@@ -7,6 +7,14 @@ import json
 from numpy import argmax
 from tensorflow import keras
 
+## setting parameters from Global.json file
+
+global_jsonfile = open('Global.json')
+global_json = json.load(global_jsonfile)
+
+number_iconstates = global_json["no_iconstates"]
+number_outputstates = global_json["no_outputstates"]
+number_focusboxes = global_json["no_focusboxes"]  
 
 ##list of json files of all apps is passed
 for json_file in os.listdir('json-testdir'):
@@ -36,9 +44,13 @@ for json_file in os.listdir('json-testdir'):
     focus_box_types = app_json["focus-boxes"]
     
     ## Mapping of iconstates for the current app
-    df_iconstates = pd.read_csv(icon_images_map)
-    list_iconstates = list(df_iconstates['Icon_state'].values)
-    dict_iconstates = dict(list(df_iconstates.values))
+    dict_iconstates = dict()
+    try:
+        df_iconstates = pd.read_csv(icon_images_map)
+        list_iconstates = list(df_iconstates['iconstate'].values)
+        dict_iconstates = dict([(list_iconstates[i],i) for i in range(len(list_iconstates))])
+    except:
+        pass
     
     
     ##target file where data to be stored
@@ -63,7 +75,6 @@ for json_file in os.listdir('json-testdir'):
         icon_state = ''
         #for each focus box type
         data_row = []
-        data_row_icons = [0 for i in range(25)]
         ##searching the icon gloabally with some conditions if required 
         for icon_search in app_json["search-icon-global"]:
             
@@ -131,8 +142,11 @@ for json_file in os.listdir('json-testdir'):
         #print(file,"->",icon_state)    
         sz = len(data_row)
         #print(sz)
-        for i in range(60-int(sz/4)):
+        for i in range(number_focusboxes-int(sz/4)):
             data_row = data_row + [0,0,720,576]
+        
+        data_row_icons = [0 for i in range(number_iconstates)]
+
         try:
             ind = dict_iconstates[icon_state]
             data_row_icons[ind] = 1
@@ -146,9 +160,9 @@ for json_file in os.listdir('json-testdir'):
             
     
     columns = []
-    for i in range(60):
+    for i in range(number_focusboxes):
         columns = columns + col_names(i+1)
-    columns = columns + ["Icon"+str(i+1) for i in range(25)]
+    columns = columns + ["Icon"+str(i+1) for i in range(number_iconstates)]
     columns.append('APP')
     df = pd.DataFrame(data,columns = columns)
     
@@ -158,7 +172,7 @@ for json_file in os.listdir('json-testdir'):
     X = X.astype('float32')
     X[:,:240] = np.log(X[:,:240]+4)/6.0
     
-    model = keras.models.load_model('Generic_0.998')
+    model = keras.models.load_model('Generic_0.99')
     
     df_statesmap = pd.read_csv(app_json['states-mapping'])
     dict_statesmap = dict(list(df_statesmap.values))

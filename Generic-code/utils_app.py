@@ -147,35 +147,8 @@ def find_icon_max(gray_img,start,ref):
     if maxi_val > 0.8:
         #print(maxi_val)
         icon_state = maxi_image[:-4]
-        if icon_state[-1] == '2' and icon_state[:4] != "home":
-            return icon_state[:-1]
         return icon_state
     
     return ''
     
     
-def match_icon(template):
-    dist = []
-    list_dir = os.listdir(ref)
-    for file in list_dir:
-        histogram = cv2.calcHist([template], [0],None, [256], [0, 256])
-        
-        # data1 image
-        image = cv2.imread(ref+'/'+file)
-        gray_image1 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        histogram1 = cv2.calcHist([gray_image1], [0],None, [256], [0, 256])
-        						
-        
-        
-        c1 = 0
-        
-        # Euclidean Distace between data1 and test
-        i = 0
-        while i<len(histogram) and i<len(histogram1):
-        	c1+=(histogram[i]-histogram1[i])**2
-        	i+= 1
-        c1 = c1**(1 / 2)
-        dist += list(c1)
-        #print(c1)
-    print(np.min(dist))
-    return list_dir[np.argmin(dist)][:-4] 

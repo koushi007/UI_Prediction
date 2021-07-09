@@ -6,16 +6,26 @@ from pandas.core.common import flatten
 from utils_app import generate_data,find_icon_max,eval_expr,parse_condition,col_names
 import json
 
+## setting parameters from Global.json file
+
+global_jsonfile = open('Global.json')
+global_json = json.load(global_jsonfile)
+
+number_iconstates = global_json["no_iconstates"]
+number_outputstates = global_json["no_outputstates"]
+number_focusboxes = global_json["no_focusboxes"]  
+
+
 ## Total data will be stored in this list
 data = []
 
 ##list of json files of all apps is passed
-for json_file in os.listdir('json-dir'):
+for json_file in os.listdir('json-traindir'):
     ## load the json file
     if not json_file.endswith('.json'):
         continue
     #print(json_file)
-    json_file = open('json-dir/'+json_file)
+    json_file = open('json-traindir/'+json_file)
     app_json = json.load(json_file)  
     
     #Read screenshots directory,icon images directory, icon images to states mapping csv
@@ -33,10 +43,13 @@ for json_file in os.listdir('json-dir'):
     focus_box_types = app_json["focus-boxes"]
     
     ## Mapping of iconstates for the current app
-    df_iconstates = pd.read_csv(icon_images_map)
-    list_iconstates = list(df_iconstates['Icon_state'].values)
-    dict_iconstates = dict(list(df_iconstates.values))
-    
+    dict_iconstates = dict()
+    try:
+        df_iconstates = pd.read_csv(icon_images_map)
+        list_iconstates = list(df_iconstates['iconstate'].values)
+        dict_iconstates = dict([(list_iconstates[i],i) for i in range(len(list_iconstates))])
+    except:
+        pass
     
     ##target file where data to be stored
     app_identifier = app_json["app-identifier"]
@@ -67,7 +80,6 @@ for json_file in os.listdir('json-dir'):
         icon_state = ''
         #for each focus box type
         data_row = []
-        data_row_icons = [0 for i in range(25)]
         ##searching the icon gloabally with some conditions if required 
         for icon_search in app_json["search-icon-global"]:
             
@@ -135,8 +147,11 @@ for json_file in os.listdir('json-dir'):
         #print(file,"->",icon_state)    
         sz = len(data_row)
         #print(sz)
-        for i in range(60-int(sz/4)):
+        for i in range(number_focusboxes-int(sz/4)):
             data_row = data_row + [0,0,720,576]
+        
+        data_row_icons = [0 for i in range(number_iconstates)]
+
         try:
             ind = dict_iconstates[icon_state]
             data_row_icons[ind] = 1
@@ -145,29 +160,26 @@ for json_file in os.listdir('json-dir'):
         data_row = data_row + data_row_icons
         data_row.append(app_identifier)
         
-        data_row_output = [0 for i in range(50)]
+        data_row_output = [0 for i in range(number_outputstates)]
         data_row_output[dict_outputstates[file.split('.')[0].split('-')[0]]] = 1
         data_row += data_row_output
         
         #data_row.append(file.split('.')[0].split('-')[0])
-        data = data+generate_data(data_row,76)
+        data = data+generate_data(data_row,number_iconstates+number_outputstates+1)
         
         #data.append(data_row)
     
-        cv2.imwrite('new-yt/'+file,img)
-        thresh = cv2.cvtColor(thresh,cv2.COLOR_GRAY2BGR)
-        #cv2.imwrite('new-nt/thresh'+file,thresh)
- 
+        
 
 columns = []
-for i in range(60):
+for i in range(number_focusboxes):
     columns = columns + col_names(i+1)
-columns = columns + ["Icon"+str(i+1) for i in range(25)]
+columns = columns + ["Icon"+str(i+1) for i in range(number_iconstates)]
 columns.append('APP')
-columns = columns + ["Output_state"+str(i+1) for i in range(50)]
+columns = columns + ["Output_state"+str(i+1) for i in range(number_outputstates)]
 df = pd.DataFrame(2*data,columns = columns)
 
-df.to_csv("Combined_generic_new_data.csv") 
+df.to_csv("Generic_data.csv") 
     
 
 

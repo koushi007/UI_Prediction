@@ -1,9 +1,9 @@
 {
     "app-name": "Notification",
-    "directory-path" : "notification-screenshots-ko/",
-    "icon-images-path" : "ref",
-    "icon-images-mapping" : "Notification_iconstates.csv",
-    "states-mapping" : "Notification_statesmap.csv",
+    "directory-path" : "Testing-images/Notification-Testing/",
+    "icon-images-path" : "Icon-images/Notification-icon-images/",
+    "icon-images-mapping" : "Iconstates-map/Notification_iconstates.csv",
+    "states-mapping" : "Outputstates-map/Notification_statesmap.csv",
     "app-identifier" : 3,
     "search-icon-global" : [],
     "focus-boxes" : [

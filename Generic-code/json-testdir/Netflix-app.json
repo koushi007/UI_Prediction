@@ -1,9 +1,9 @@
 {
     "app-name": "Netflix",
-    "directory-path" : "Netflix-Testing/",
-    "icon-images-path" : "org.tizen.netflix-app",
-    "icon-images-mapping" : "Netflix_iconstates.csv",
-    "states-mapping" : "Netflix_statesmap.csv",
+    "directory-path" : "Testing-images/Netflix-Testing/",
+    "icon-images-path" : "Icon-images/Netflix-icon-images/",
+    "icon-images-mapping" : "Iconstates-map/Netflix_iconstates.csv",
+    "states-mapping" : "Outputstates-map/Netflix_statesmap.csv",
     "app-identifier" : 1,
     "search-icon-global" : [
         {

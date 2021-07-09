@@ -1,0 +1,67 @@
+{
+    "app-name": "Youtube",
+    "directory-path" : "Training-images/Youtube-Training/",
+    "icon-images-path" : "",
+    "icon-images-mapping" : "",
+    "states-mapping" : "Outputstates-map/Youtube_statesmap.csv",
+    "app-identifier" : 2,
+    "search-icon-global" : [],
+    "focus-boxes" : [
+        {
+            "blurring" : 0,
+            "threshold-value" : 230,
+            "threshold-type" : 0,
+            "rectangle-error" : 0.02,
+            "conditions": [ "w > 50" , "h > 15"],
+            "search-icon" : [],
+            "color": [0,0,255]
+        },
+        {
+            "blurring" : 5,
+            "threshold-value" : 230,
+            "threshold-type" : 0,
+            "rectangle-error" : 0.07,
+            "conditions": [ "w > 5" , "h > 5","x<40"],
+            "search-icon" : [],
+            "color": [255,0,0]
+        },
+        {
+            "blurring" : 5,
+            "threshold-value" : 230,
+            "threshold-type" : 0,
+            "rectangle-error" : 0.07,
+            "conditions": [ "x > 250" , " y > 150" , "w>10","h<30","y<280"],
+            "search-icon": [],
+            "color": [255,0,0]
+        },
+        {
+            "blurring" : 5,
+            "threshold-value" : 27,
+            "threshold-type" : 0,
+            "rectangle-error" : 0.07,
+            "conditions": [ "w > 50" , "h > 50"],
+            "search-icon": [],
+            "color": [0,255,0]
+        },
+        {
+            "blurring" : 5,
+            "threshold-value" : 27,
+            "threshold-type" : 1,
+            "rectangle-error" : 0.07,
+            "conditions": [ "x > 250" , " y > 150","w>5","h>5","h<20","w<20","y<280"],
+            "search-icon": [],
+            "color": [0,255,0]
+        },
+        {
+            "blurring" : 5,
+            "threshold-value" : 27,
+            "threshold-type" : 1,
+            "rectangle-error" : 0.07,
+            "conditions": [ "x < 40" , " y > 150" , "w>5","h>5"],
+            "search-icon": [],
+            "color": [0,255,0]
+        }
+        
+        
+    ]
+}
